@@ -15,6 +15,17 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "codic configuration",
+            "properties": {
+                "codic.ACCESS_TOKEN" : {
+                    "type": "string",
+                    "default": null, 
+                    "description": "codic API Access Token"
+                }
+            }
+        },
         "commands": [{
             "command": "extension.codictranslate",
             "title": "codic: Translate Japanese prase"

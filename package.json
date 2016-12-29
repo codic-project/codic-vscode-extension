@@ -1,7 +1,7 @@
 {
     "name": "codic",
     "displayName": "codic",
-    "description": "[UNOFFICIAL] provides support for codic",
+    "description": "[UNOFFICIAL] codic extension",
     "version": "0.0.1",
     "publisher": "pizzacat83",
     "engines": {
@@ -11,13 +11,13 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.codictranslate"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
+            "command": "extension.codictranslate",
+            "title": "codic: Translate Japanese prase"
         }]
     },
     "scripts": {

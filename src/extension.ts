@@ -9,8 +9,31 @@ export function activate(context: vscode.ExtensionContext) {
 
     var request=require("request-promise");
     var nullsignal = "<null>";
-    function applyCase(word:string, isFirst:boolean){
-        return isFirst?word:"_"+word;
+    var Cases={
+        "PascalCase": {
+            "applyfunc": (word:string, isFirst:boolean)=>{return word[0].toUpperCase()+word.slice(1);},
+            "sample": "Aa"
+        },
+        "camelCase": {
+            "applyfunc": (word:string, isFirst:boolean)=>{return isFirst?word:(word[0].toUpperCase()+word.slice(1));},
+            "sample": "aA"
+        },
+        "snake_case": {
+            "applyfunc": (word:string, isFirst:boolean)=>{return isFirst?word:"_"+word;},
+            "sample": "a_a"
+        },
+        "SNAKE_CASE": {
+            "applyfunc": (word:string, isFirst:boolean)=>{return (isFirst?word:"_"+word).toUpperCase();},
+            "sample": "A_A",
+        },
+        "hy-phen-a-tion": {
+            "applyfunc": (word:string, isFirst:boolean)=>{return isFirst?word:"-"+word;},
+            "sample": "a-a"
+        },
+        "no case": {
+            "applyfunc": (word:string, isFirst:boolean)=>{return isFirst?word:" "+word;},
+            "sample": "a a"
+        }
     }
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -23,6 +46,7 @@ export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerCommand('extension.codictranslate', () => {
         var ACCESS_TOKEN=vscode.workspace.getConfiguration('codic').get('ACCESS_TOKEN');
         // The code you place here will be executed every time your command is executed
+        context.workspaceState.update("codic.case", "snake_case");
         vscode.window.showInputBox({prompt: 'Input a Japanese phrase'})
             .then(function(input){
                 if(input === undefined || input === ""){
@@ -66,7 +90,7 @@ export function activate(context: vscode.ExtensionContext) {
                         }
                         var editor = vscode.window.activeTextEditor;
                         var edit = new vscode.WorkspaceEdit();
-                        edit.insert(editor.document.uri, editor.selection.anchor, applyCase(choice,isFirst));
+                        edit.insert(editor.document.uri, editor.selection.anchor, Cases[context.workspaceState.get<string>("codic.case")]["applyfunc"](choice,isFirst));
                         isFirst=false;
                         return vscode.workspace.applyEdit(edit);
                     })

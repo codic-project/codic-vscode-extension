@@ -30,16 +30,16 @@
         },
         "commands": [
             {
-                "command": "extension.codictranslate",
-                "title": "codic: Translate Japanese phrase"
+                "command": "extension.codicTranslate",
+                "title": "codic: Translate Japanese Phrase"
             },
             {
-                "command": "extension.codicsetlocalcase",
-                "title": "codic: select which case to use locally"
+                "command": "extension.codicSetLocalCase",
+                "title": "codic: Select Which Case to Use Locally"
             },
             {
-                "command": "extension.codicsetglobalcase",
-                "title": "codic: select which case to use globally"
+                "command": "extension.codicSetGlobalCase",
+                "title": "codic: Select Which Case to Use Globally"
             }
         ]
     },

@@ -9,7 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     var request=require("request-promise");
     var nullsignal = "<null>";
-    var Cases={
+    var Cases:{[index:string]:{applyfunc:(string,boolean)=>string, sample:string}}={
         "PascalCase": {
             "applyfunc": (word:string, isFirst:boolean)=>{return word[0].toUpperCase()+word.slice(1);},
             "sample": "Aa"
@@ -43,10 +43,11 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.codictranslate', () => {
+    let disposable:vscode.Disposable[] = [];
+    disposable.push(vscode.commands.registerCommand('extension.codictranslate', () => {
         var ACCESS_TOKEN=vscode.workspace.getConfiguration('codic').get('ACCESS_TOKEN');
         // The code you place here will be executed every time your command is executed
-        context.workspaceState.update("codic.case", "snake_case");
+
         vscode.window.showInputBox({prompt: 'Input a Japanese phrase'})
             .then(function(input){
                 if(input === undefined || input === ""){
@@ -100,9 +101,20 @@ export function activate(context: vscode.ExtensionContext) {
                     });
                 });
             });
-    });
+    }));
 
-    context.subscriptions.push(disposable);
+    disposable.push(vscode.commands.registerCommand("extension.codicsetlocalcase", ()=>{
+        var keys=[];
+        for(var key in Cases){
+            keys.push(key);
+        }
+        vscode.window.showQuickPick(keys)
+        .then(function(choice){context.workspaceState.update("codic.case", choice);});
+    }))
+
+    disposable.forEach(function(item){
+        context.subscriptions.push(item);
+    });
     context.subscriptions.push(request);
 }
 

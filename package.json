@@ -10,6 +10,14 @@
     "categories": [
         "Other"
     ],
+    "license": "MIT License",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pizzacat83/codic-vscode-extension"
+    },
+    "bugs": {
+        "url": "https://github.com/pizzacat83/codic-vscode-extension/issues"
+    },
     "activationEvents": [
         "onCommand:extension.codictranslate",
         "onCommand:extension.codicsetlocalcase",

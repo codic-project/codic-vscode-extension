@@ -3,19 +3,20 @@
 ネーミングツール [codic](https://codic.jp) を VS Code のコマンドパレットから操作できるようにする拡張機能です。
 
 ## 使い方
-
-![usage GIF](usage.gif)
-
 ※ 事前に後述の「設定」を行う必要があります。
 
-コマンドパレットに以下のコマンドを入力します。
+コマンドパレットから以下のコマンドを選択します。
 ```
 codic: Translate Japanese Phrase
 ```
-表示された入力欄に、翻訳したい文字列を入力します。
+![choose Translation command from command pallet](images/translate.png)
+
+表示された入力欄に、翻訳したい文字列を入力します。  
+![input a phrase to translate](images/japanese.png)
 
 それぞれの単語に対応する訳語の一覧が表示されるので、適当なものを選択します。  
-※ \<null\> という選択肢は、訳出しないことを意味します。
+※ \<null\> という選択肢は、訳出しないことを意味します。  
+![choose an equivalent](images/candidates.png)
 
 選択した単語が入力されます。
 
@@ -61,7 +62,9 @@ codic: Set Which Case to Use Locally
 ```
 codic: Set Which Case to Use Globally
 ```
-をコマンドパレットに入力し、表示された選択肢から使用したい case を選択してください。
+をコマンドパレットから選択し、表示された選択肢から使用したい case を選択してください。  
+![call command from command pallet](images/codic.png)  
+![choose case](images/cases.png)
 
 ## ライセンス
 この拡張機能は [MIT License](LICENSE.txt) の下で利用可能です。  

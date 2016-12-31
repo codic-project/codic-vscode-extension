@@ -12,7 +12,8 @@
     ],
     "activationEvents": [
         "onCommand:extension.codictranslate",
-        "onCommand:extension.codicsetlocalcase"
+        "onCommand:extension.codicsetlocalcase",
+        "onCommand:extension.codicsetglobalcase"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -35,6 +36,10 @@
             {
                 "command": "extension.codicsetlocalcase",
                 "title": "codic: select which case to use locally"
+            },
+            {
+                "command": "extension.codicsetglobalcase",
+                "title": "codic: select which case to use globally"
             }
         ]
     },

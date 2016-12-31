@@ -47,7 +47,9 @@ export function activate(context: vscode.ExtensionContext) {
     disposable.push(vscode.commands.registerCommand('extension.codictranslate', () => {
         var ACCESS_TOKEN=vscode.workspace.getConfiguration('codic').get('ACCESS_TOKEN');
         // The code you place here will be executed every time your command is executed
-
+        if(context.globalState.get("codic.case")===undefined && context.workspaceState.get("codic.case")===undefined){
+            vscode.window.showErrorMessage("case が設定されていません。")
+        }
         vscode.window.showInputBox({prompt: 'Input a Japanese phrase'})
             .then(function(input){
                 if(input === undefined || input === ""){
@@ -91,7 +93,9 @@ export function activate(context: vscode.ExtensionContext) {
                         }
                         var editor = vscode.window.activeTextEditor;
                         var edit = new vscode.WorkspaceEdit();
-                        edit.insert(editor.document.uri, editor.selection.anchor, Cases[context.workspaceState.get<string>("codic.case")]["applyfunc"](choice,isFirst));
+                        var case_ = context.workspaceState.get<string>("codic.case");
+                        case_=case_===undefined?context.globalState.get<string>("codic.case"):case_;
+                        edit.insert(editor.document.uri, editor.selection.anchor, Cases[case_]["applyfunc"](choice,isFirst));
                         isFirst=false;
                         return vscode.workspace.applyEdit(edit);
                     })
@@ -110,6 +114,15 @@ export function activate(context: vscode.ExtensionContext) {
         }
         vscode.window.showQuickPick(keys)
         .then(function(choice){context.workspaceState.update("codic.case", choice);});
+    }))
+
+    disposable.push(vscode.commands.registerCommand("extension.codicsetglobalcase", ()=>{
+        var keys=[];
+        for(var key in Cases){
+            keys.push(key);
+        }
+        vscode.window.showQuickPick(keys)
+        .then(function(choice){context.globalState.update("codic.case", choice);});
     }))
 
     disposable.forEach(function(item){

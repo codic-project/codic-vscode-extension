@@ -44,7 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     let disposable:vscode.Disposable[] = [];
-    disposable.push(vscode.commands.registerCommand('extension.codictranslate', () => {
+    disposable.push(vscode.commands.registerCommand('extension.codicTranslate', () => {
         var ACCESS_TOKEN=vscode.workspace.getConfiguration('codic').get('ACCESS_TOKEN');
         // The code you place here will be executed every time your command is executed
         if(context.globalState.get("codic.case")===undefined && context.workspaceState.get("codic.case")===undefined){
@@ -107,7 +107,7 @@ export function activate(context: vscode.ExtensionContext) {
             });
     }));
 
-    disposable.push(vscode.commands.registerCommand("extension.codicsetlocalcase", ()=>{
+    disposable.push(vscode.commands.registerCommand("extension.codicSetLocalCase", ()=>{
         var keys=[];
         for(var key in Cases){
             keys.push(key);
@@ -116,7 +116,7 @@ export function activate(context: vscode.ExtensionContext) {
         .then(function(choice){context.workspaceState.update("codic.case", choice);});
     }))
 
-    disposable.push(vscode.commands.registerCommand("extension.codicsetglobalcase", ()=>{
+    disposable.push(vscode.commands.registerCommand("extension.codicSetGlobalCase", ()=>{
         var keys=[];
         for(var key in Cases){
             keys.push(key);

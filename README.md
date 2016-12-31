@@ -1,65 +1,86 @@
-# codic README
+# codic
 
-This is the README for your extension "codic". After writing up a brief description, we recommend including the following sections.
+ネーミングツール [codic](https://codic.jp) を VS Code のコマンドパレットから操作できるようにする拡張機能です。
 
-## Features
+## 使い方
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+![usage GIF](usage.gif)
 
-For example if there is an image subfolder under your extension project workspace:
+※ 事前に後述の「設定」を行う必要があります。
 
-\!\[feature X\]\(images/feature-x.png\)
+コマンドパレットに以下のコマンドを入力します。
+```
+codic: Translate Japanese Phrase
+```
+表示された入力欄に、翻訳したい文字列を入力します。
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+それぞれの単語に対応する訳語の一覧が表示されるので、適当なものを選択します。  
+※ \<null\> という選択肢は、訳出しないことを意味します。
 
-## Requirements
+選択した単語が入力されます。
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## 動作環境
 
-## Extension Settings
+Visual Studio Code 1.5.0以上
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## インストール
+コマンドパレットに以下のコマンドを入力してください。
+```
+ext install codic
+```
+Marketplace の検索結果が表示されるので、この拡張機能を選択し、インストールしてください。
 
-For example:
+## 設定
 
-This extension contributes the following settings:
+### アクセストークンの設定
+この拡張機能を利用するには、codic API のアクセストークンを設定することが必要です。  
+アクセストークンは[こちら](https://codic.jp/my/api_status)で取得できます。  
+`メニューバー > ファイル > 基本設定 > ユーザー設定` から `settings.json` を開き、以下のように記述を追加してください。
+```json
+{
+    "codic.API_KEY": "取得したアクセストークン"
+}
+```  
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+### case の設定
+単語の連結方法を、
+- `PascalCase`
+- `camelCase`
+- `snake_case`
+- `SNAKE_CASE`
+- `hy-phen-a-tion` (ハイフン区切り)
+- `no case` (空白区切り)
 
-## Known Issues
+から選ぶことができます。
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+現在のワークスペースにのみ適用する場合、
+```
+codic: Set Which Case to Use Locally
+```
+全てのワークスペースに適用する場合、
+```
+codic: Set Which Case to Use Globally
+```
+をコマンドパレットに入力し、表示された選択肢から使用したい case を選択してください。
 
-## Release Notes
+## ライセンス
+この拡張機能は [MIT License](LICENSE.txt) の下で利用可能です。  
+ソースコードは以下の GitHub リポジトリをご参照ください。  
+[https://github.com/pizzacat83/codic-vscode-extension](https://github.com/pizzacat83/codic-vscode-extension)
 
-Users appreciate release notes as you update your extension.
+## バグ報告
+[GitHub リポジトリの Issue](https://github.com/pizzacat83/codic-vscode-extension/issues) までご報告ください。  
+※ ver 0.0.1 時点ではエラー処理をほとんどやっていません。そのうち実装します。
 
-### 1.0.0
+### 既知の不具合
+- QuickPick の表示中に Esc や QuickPick 外クリックなどでキャンセルしようとすると、何も入力されず次の単語の QuickPick が表示される
 
-Initial release of ...
+## TODO
+- codic のプロジェクトを選択可能にする
+- case とプロジェクトをステータスバーに表示し、ステータスバーから変更可能にする
+- コードの一部を選択している時は、選択範囲の文字列を翻訳するようにする
 
-### 1.0.1
+## リリースノート
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+### 0.0.1
+- codic 拡張機能公開

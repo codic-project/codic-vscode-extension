@@ -17,7 +17,7 @@ codic: Translate Japanese Phrase
 ![input a phrase to translate](images/japanese.png)  
 
 それぞれの単語に対応する訳語の一覧が表示されるので、適当なものを選択します。  
-※ \<null\> という選択肢は、訳出しないことを意味します。  
+※ &lt;null&gt; という選択肢は、訳出しないことを意味します。  
 ![choose an equivalent](images/candidates.png)  
 
 選択した単語が入力されます。

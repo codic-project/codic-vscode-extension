@@ -1,6 +1,6 @@
 # codic
 
-ネーミングツール [codic](https://codic.jp) を VS Code のコマンドパレットから操作できるようにする拡張機能です。
+ネーミングツール [codic](https://codic.jp) を Visual Studio Code のコマンドパレットから操作できるようにする拡張機能です。
 
 ## 使い方
 ![usage GIF](images/usage.gif)  
@@ -73,23 +73,14 @@ codic: Set Which Case to Use Globally
 ソースコードは以下の GitHub リポジトリをご参照ください。  
 [https://github.com/pizzacat83/codic-vscode-extension](https://github.com/pizzacat83/codic-vscode-extension)
 
-## バグ報告
+## バグ報告・要望
 [GitHub リポジトリの Issue](https://github.com/pizzacat83/codic-vscode-extension/issues) までご報告ください。  
 ※ ver 0.0.1 時点ではエラー処理をほとんどやっていません。そのうち実装します。
 
-### 既知の不具合
-- QuickPick の表示中に Esc や QuickPick 外クリックなどでキャンセルしようとすると、何も入力されず次の単語の QuickPick が表示される
+### 既知の不具合・要望
+[GitHub リポジトリの open issue](https://github.com/codic-project/codic-vscode-extension/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen)をご参照ください。  
+また、それぞれの優先度や進捗状況については、[GiHub リポジトリの Project](https://github.com/codic-project/codic-vscode-extension/projects/2)をご覧ください。
 
-## TODO
-- codic のプロジェクトを選択可能にする
-- case とプロジェクトをステータスバーに表示し、ステータスバーから変更可能にする
-- コードの一部を選択している時は、選択範囲の文字列を翻訳するようにする
+## 変更履歴
 
-## リリースノート
-
-### 0.0.1
-- codic 拡張機能公開
-
-### 0.0.2
-- package.json の dependencies関連の誤りを修正
-- README.md の誤植を修正
+[こちら](CHANGELOG.md)をご覧ください。

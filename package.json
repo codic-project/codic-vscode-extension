@@ -2,7 +2,7 @@
   "name": "codic",
   "displayName": "codic",
   "description": "codic extension",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "pizzacat83",
   "engines": {
     "vscode": "^1.5.0"

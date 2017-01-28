@@ -13,10 +13,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pizzacat83/codic-vscode-extension"
+    "url": "https://github.com/codic-project/codic-vscode-extension"
   },
   "bugs": {
-    "url": "https://github.com/pizzacat83/codic-vscode-extension/issues"
+    "url": "https://github.com/codic-project/codic-vscode-extension/issues"
   },
   "activationEvents": [
     "onCommand:extension.codicTranslate",

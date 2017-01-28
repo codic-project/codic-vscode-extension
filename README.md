@@ -71,14 +71,14 @@ codic: Set Which Case to Use Globally
 ## ライセンス
 この拡張機能は [MIT License](LICENSE.txt) の下で利用可能です。  
 ソースコードは以下の GitHub リポジトリをご参照ください。  
-[https://github.com/pizzacat83/codic-vscode-extension](https://github.com/pizzacat83/codic-vscode-extension)
+[https://github.com/codic-project/codic-vscode-extension](https://github.com/codic-project/codic-vscode-extension)
 
 ## バグ報告・要望
-[GitHub リポジトリの Issue](https://github.com/pizzacat83/codic-vscode-extension/issues) までご報告ください。  
+[GitHub リポジトリの Issue](https://github.com/codic-project/codic-vscode-extension/issues) までご報告ください。  
 ※ ver 0.0.1 時点ではエラー処理をほとんどやっていません。そのうち実装します。
 
 ### 既知の不具合・要望
-[GitHub リポジトリの open issue](https://github.com/codic-project/codic-vscode-extension/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen)をご参照ください。  
+[GitHub リポジトリの Open Issues](https://github.com/codic-project/codic-vscode-extension/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen)をご参照ください。  
 また、それぞれの優先度や進捗状況については、[GiHub リポジトリの Project](https://github.com/codic-project/codic-vscode-extension/projects/2)をご覧ください。
 
 ## 変更履歴

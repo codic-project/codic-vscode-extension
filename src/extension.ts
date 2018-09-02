@@ -81,15 +81,15 @@ class CodicExtension{
     }
 
     protected getAccessToken():string{
-        let ACCESS_TOKEN=vscode.workspace.getConfiguration('codic').get<string>('ACCESS_TOKEN');
-        if(ACCESS_TOKEN===undefined){
+        let ACCESS_TOKEN=vscode.workspace.getConfiguration('codic').get<string|undefined>('ACCESS_TOKEN');
+        if(!ACCESS_TOKEN){
             vscode.window.showErrorMessage("アクセストークンが設定されていません。");
             throw 'no ACCESS_TOKEN';
         }
         return ACCESS_TOKEN;
     }
 
-    protected getInputText():PromiseLike<string|boolean>{
+    protected getInputText():PromiseLike<string|Promise<never>>{
         return vscode.window.showInputBox({prompt: 'Input a Japanese phrase'})
         .then((input) => {
             if(input === undefined || input === ""){

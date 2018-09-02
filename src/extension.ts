@@ -83,7 +83,7 @@ class CodicExtension{
     protected getAccessToken():string{
         let ACCESS_TOKEN=vscode.workspace.getConfiguration('codic').get<string>('ACCESS_TOKEN');
         if(ACCESS_TOKEN===undefined){
-            vscode.window.showErrorMessage("case が設定されていません。");
+            vscode.window.showErrorMessage("アクセストークンが設定されていません。");
             throw 'no ACCESS_TOKEN';
         }
         return ACCESS_TOKEN;

@@ -2,10 +2,10 @@
   "name": "codic",
   "displayName": "codic",
   "description": "codic extension",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "publisher": "pizzacat83",
   "engines": {
-    "vscode": "^1.5.0"
+    "vscode": "^1.26.0"
   },
   "categories": [
     "Other"
@@ -33,6 +33,11 @@
           "type": "string",
           "default": null,
           "description": "codic API Access Token"
+        },
+        "codic.case": {
+          "type": "string",
+          "default": null,
+          "description": "単語の連結方法を指定します。\"PascalCase\", \"camelCase\", \"snake_case\", \"SNAKE_CASE\", \"hy-phen-a-tion\", \"no case\" から一つ選んでください。"
         }
       }
     },
@@ -64,7 +69,7 @@
   "devDependencies": {
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.40",
-    "mocha": "^2.3.3",
+    "mocha": "^5.2.0",
     "typescript": "^2.0.3",
     "vscode": "^1.0.0"
   }

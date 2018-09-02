@@ -43,6 +43,11 @@ class CodicExtension{
     }
 
     public translate():void{
+        if(!this.disposeLegacyCaseSetting()){
+            // case未設定
+            vscode.window.showErrorMessage("単語の連結方法が設定されていません。");
+            return;
+        }
         this.getInputText()
         .then((input:string) => this.sendRequest(input, this.getAccessToken()))
         .then((body)=>this.listCandidates(body))
@@ -55,7 +60,9 @@ class CodicExtension{
             keys.push(key);
         }
         vscode.window.showQuickPick(keys)
-        .then((choice) => {this.context.workspaceState.update("codic.case", choice);});
+        .then((choice) => {
+            vscode.workspace.getConfiguration('codic').update('case', choice, false);
+        });
     }
 
     public setGlobalCase(){
@@ -64,7 +71,9 @@ class CodicExtension{
             keys.push(key);
         }
         vscode.window.showQuickPick(keys)
-        .then((choice) => {this.context.globalState.update("codic.case", choice);});
+        .then((choice) => {
+            vscode.workspace.getConfiguration('codic').update('case', choice, true);
+        });
     }
     
     public dispose(){
@@ -116,9 +125,7 @@ class CodicExtension{
     }
 
     protected getCase(){
-        let case_ = this.context.workspaceState.get<string>("codic.case");
-        case_=case_===undefined?this.context.globalState.get<string>("codic.case"):case_;
-        return case_;
+        return vscode.workspace.getConfiguration('codic').get<string>('case');
     }
 
     protected applyCase(text:string, isFirst:boolean, case_:string){
@@ -153,6 +160,27 @@ class CodicExtension{
     protected moveCursorToEndOfSelection(){
         let editor = vscode.window.activeTextEditor;
         editor.selection = new vscode.Selection(editor.selection.end,editor.selection.end);
+    }
+
+    protected disposeLegacyCaseSetting():boolean{
+        // 旧case設定をsettings.jsonに移行
+        // 設定がなかった場合はfalse
+        let new_case = vscode.workspace.getConfiguration('codic').get<string>('case');
+        if(!new_case){
+            // local, global共に設定されていない
+            let local_legacy_case = this.context.workspaceState.get<string|undefined>("codic.case");
+            if(local_legacy_case){
+                vscode.workspace.getConfiguration('codic').update('case', local_legacy_case, false);
+            }
+            let global_legacy_case = this.context.globalState.get<string|undefined>("codic.case");
+            if(global_legacy_case){
+                vscode.workspace.getConfiguration('codic').update('case', global_legacy_case, false);
+            }
+            return local_legacy_case !== undefined || global_legacy_case !== undefined;
+        } else {
+            // なんかしら設定されている
+            return true;
+        }
     }
 
 }

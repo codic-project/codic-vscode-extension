@@ -58,11 +58,11 @@ Marketplace の検索結果が表示されるので、この拡張機能を選�
 
 現在のワークスペースにのみ適用する場合、
 ```
-codic: Set Which Case to Use Locally
+codic: Select Which Case to Use Locally
 ```
 全てのワークスペースに適用する場合、
 ```
-codic: Set Which Case to Use Globally
+codic: Select Which Case to Use Globally
 ```
 をコマンドパレットから選択し、表示された選択肢から使用したい case を選択してください。  
 ![call command from command pallet](images/codic.png)    
